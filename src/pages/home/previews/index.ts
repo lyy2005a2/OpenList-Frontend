@@ -190,6 +190,11 @@ const previews: Preview[] = [
     },
     availableInArchive: false,
   },
+  {
+    name: "Video360",
+    type: ObjType.VIDEO,
+    component: lazy(() => import("./video360")),
+  },
 ]
 
 export const getPreviews = (

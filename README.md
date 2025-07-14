@@ -1,8 +1,8 @@
 # OpenList (魔改前端-修改来自"iNoi-Web")
 
-[![GitHub package.json version](https://img.shields.io/github/v/release/lyy2005a3/OpenList-Frontend)](./package.json)
+[![GitHub package.json version](https://img.shields.io/github/v/release/lyy2005a2/OpenList-Frontend)](./package.json)
 [![NPM Version](https://img.shields.io/npm/v/%40openlist-frontend%2Fopenlist-frontend)](https://www.npmjs.com/package/@openlist-frontend/openlist-frontend)
-[![NPM Downloads](https://img.shields.io/github/downloads/lyy2005a3/OpenList-Frontend/total?color=#9F7AEA&logo=github)](https://img.shields.io/github/downloads/lyy2005a3/OpenList-Frontend/total?color=#9F7AEA&logo=github")
+[![NPM Downloads](https://img.shields.io/github/downloads/lyy2005a2/OpenList-Frontend/total?color=#9F7AEA&logo=github)](https://img.shields.io/github/downloads/lyy2005a2/OpenList-Frontend/total?color=#9F7AEA&logo=github")
 [![NPM Last Update](https://img.shields.io/npm/last-update/%40openlist-frontend%2Fopenlist-frontend)](https://www.npmjs.com/package/@openlist-frontend/openlist-frontend)
 
 

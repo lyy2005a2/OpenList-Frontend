@@ -8,7 +8,7 @@ export const setSettings = (items: Record<string, string>) => {
   })
   const version = settings["version"] || "Unknown"
   console.log(
-    `%c Long • Cloud %c ${version} %c https://github.com/lyy2005a3/Long-Cloud`,
+    `%c Long • Cloud %c ${version} %c https://github.com/lyy2005a2/Long-Cloud`,
     "color: #fff; background: #5f5f5f",
     "color: #fff; background: #70c6be",
     "",

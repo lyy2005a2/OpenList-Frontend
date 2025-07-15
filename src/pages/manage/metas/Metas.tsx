@@ -32,7 +32,7 @@ const Metas = () => {
   )
   const [metas, setMetas] = createSignal<Meta[]>([])
   const refresh = async () => {
-    const resp: = await getMetas()
+    const resp = await getMetas()
     handleResp(resp, (data) => setMetas(data.content))
   }
   refresh()

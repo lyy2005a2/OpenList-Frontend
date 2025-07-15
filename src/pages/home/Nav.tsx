@@ -20,21 +20,21 @@ export const Nav = () => {
   const { setPathAs } = usePath()
 
   const folderInfo = createMemo(() => {
-    const { folder, file } = objStore.objs.reduce(
+    const { dir, file } = objStore.objs.reduce(
       (acc, item) => {
         if (item.is_dir) {
-          acc.folder++
+          acc.dir++
         } else {
           acc.file++
         }
         return acc
       },
-      { folder: 0, file: 0 },
+      { dir: 0, file: 0 },
     )
 
     const parts: string[] = []
-    if (folder) parts.push(`${t("home.search.scopes.folder")}:${folder}`)
-    if (file) parts.push(`${t("home.search.scopes.file")}:${file}`)
+    if (dir) parts.push(`D:${dir}`)
+    if (file) parts.push(`F:${file}`)
     return parts.join(" ")
   })
   const selectInfo = createMemo(() => {
@@ -49,7 +49,7 @@ export const Nav = () => {
     if (!selected) {
       return ""
     }
-    return ` ${t("home.obj.selected")}:${selected}`
+    return `S:${selected} `
   })
   const stickyProps = createMemo<BreadcrumbProps>(() => {
     const mask: BreadcrumbProps = {
@@ -83,7 +83,7 @@ export const Nav = () => {
 
   return (
     <HStack background="$background" class="nav" w="$full">
-      <Breadcrumb {...stickyProps} w="$full">
+      <Breadcrumb {...stickyProps} flexGrow="1">
         <For each={paths()}>
           {(name, i) => {
             const isLast = createMemo(() => i() === paths().length - 1)
@@ -127,11 +127,12 @@ export const Nav = () => {
         <Text
           css={{
             whiteSpace: "nowrap",
+            userSelect: "none",
           }}
           p="$1"
         >
-          {folderInfo()}
           {selectInfo()}
+          {folderInfo()}
         </Text>
       </Show>
     </HStack>

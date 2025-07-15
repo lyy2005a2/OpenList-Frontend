@@ -24,7 +24,7 @@ export const useLoading = <T>(
 }
 
 export const useFetch = <T>(
-  p: (...arg: any[]) => PResp<T>,
+  p: (...arg: any[]) => Promise<T>,
   loading?: boolean,
 ): [Accessor<typeof loading>, typeof p] => {
   return useLoading(p, true, loading)
@@ -50,7 +50,7 @@ const useListLoading = <T, K>(
 }
 
 export const useListFetch = <T, K>(
-  p: (key: K, ...arg: any[]) => PResp<T>,
+  p: (key: K, ...arg: any[]) => Promise<T>,
   initial?: K,
 ): [Accessor<typeof initial>, typeof p] => {
   return useListLoading(p, true, initial)

@@ -31,7 +31,6 @@ const [isTocDisabled, setTocDisabled] = createStorageSignal(
 
 export { isTocVisible, setTocDisabled }
 
-type PluginType = typeof remarkGfm | typeof rehypeRaw
 function MarkdownToc(props: {
   disabled?: boolean
   markdownRef: HTMLDivElement
@@ -215,10 +214,10 @@ export function Markdown(props: {
     })
     return content
   })
-  const [remarkPlugins, setRemarkPlugins] = createSignal<PluginType[]>([
+  const [remarkPlugins, setRemarkPlugins] = createSignal<Function[]>([
     remarkGfm,
   ])
-  const [rehypePlugins, setRehypePlugins] = createSignal<PluginType[]>([
+  const [rehypePlugins, setRehypePlugins] = createSignal<Function[]>([
     rehypeRaw,
   ])
   createEffect(
@@ -229,8 +228,8 @@ export function Markdown(props: {
         const { default: reMarkMath } = await import("remark-math")
         const { default: rehypeKatex } = await import("rehype-katex")
         insertKatexCSS()
-        setRemarkPlugins([...remarkPlugins(), reMarkMath as PluginType])
-        setRehypePlugins([...rehypePlugins(), rehypeKatex as PluginType])
+        setRemarkPlugins([...remarkPlugins(), reMarkMath])
+        setRehypePlugins([...rehypePlugins(), rehypeKatex])
       }
       insertMermaidJS()
       setTimeout(() => {
@@ -255,7 +254,9 @@ export function Markdown(props: {
       <Show when={show()}>
         <SolidMarkdown
           class={clsx("markdown-body", props.class)}
+          // @ts-ignore
           remarkPlugins={remarkPlugins()}
+          // @ts-ignore
           rehypePlugins={rehypePlugins()}
           children={md()}
         />

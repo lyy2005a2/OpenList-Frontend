@@ -83,7 +83,6 @@ const Preview = () => {
       script.onerror = () => reject(`脚本加载失败: ${src}`)
       document.head.appendChild(script)
     })
-  }
 
   // 获取WASM文件
   const fetchWasm = async (url: string) => {

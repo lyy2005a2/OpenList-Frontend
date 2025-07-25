@@ -81,7 +81,7 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         run: |
           git config user.name "The OpenList Bot"
-          git config user.email "long2005a3@outlook.com"
+          git config user.email "long2005a2@outlook.com"
 
       - name: Update package.json and commit
         if: github.event_name == 'workflow_dispatch'
@@ -145,7 +145,7 @@ jobs:
         working-directory: ./lite
         run: |
           git config user.name "The OpenList Bot"
-          git config user.email "long2005a3@outlook.com"
+          git config user.email "long2005a2@outlook.com"
 
       - name: Update package.json and commit
         if: github.event_name == 'workflow_dispatch'

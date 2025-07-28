@@ -36,6 +36,12 @@ export const initialLocalSettings = [
     options: ["none", "visible"],
   },
   {
+    key: "show_count_msg",
+    default: "none",
+    type: "select",
+    options: ["none", "visible"],
+  },
+  {
     key: "grid_item_size",
     default: "90",
     type: "number",

@@ -51,18 +51,42 @@ export const players: {
     platforms: ["Android", "iOS"],
   },
   {
-    icon: "mxplayer-pro",
-    name: "MX Player Pro",
-    scheme:
-      "intent:$durl#Intent;package=com.mxtech.videoplayer.pro;S.title=$name;end",
-    platforms: ["Android"],
+    icon: "omniplayer",
+    name: "OmniPlayer",
+    scheme: "omniplayer://weblink?url=$durl",
+    platforms: ["MacOS"],
   },
-  { icon: "iina", name: "IINA", scheme: "iina://weblink?url=$edurl" },
+  {
+    icon: "figplayer",
+    name: "Fig Player",
+    scheme: "figplayer://weblink?url=$durl",
+    platforms: ["MacOS"],
+  },
+  {
+    icon: "infuse",
+    name: "Infuse",
+    scheme: "infuse://x-callback-url/play?url=$durl",
+    platforms: ["MacOS", "iOS"],
+  },
   {
     icon: "fileball",
     name: "Fileball",
     scheme: "filebox://play?url=$durl",
     platforms: ["MacOS", "iOS"],
+  },
+  {
+    icon: "mxplayer",
+    name: "MX Player",
+    scheme:
+      "intent:$durl#Intent;package=com.mxtech.videoplayer.ad;S.title=$name;end",
+    platforms: ["Android"],
+  },
+  {
+    icon: "mxplayer-pro",
+    name: "MX Player Pro",
+    scheme:
+      "intent:$durl#Intent;package=com.mxtech.videoplayer.pro;S.title=$name;end",
+    platforms: ["Android"],
   },
   {
     icon: "iPlay",
@@ -83,8 +107,8 @@ export const AutoHeightPlugin = (player: Artplayer) => {
   const $videoBox = $container.parentElement!
 
   player.on("ready", () => {
-    const offsetBottom = "0rem" // position bottom of "More" button + padding
-    $videoBox.style.maxHeight = `calc(100vh - ${offsetBottom})`
+    const offsetBottom = "1.75rem" // position bottom of "More" button + padding
+    $videoBox.style.maxHeight = `calc(100vh - ${$videoBox.offsetTop}px - ${offsetBottom})`
     $videoBox.style.minHeight = "320px" // min width of mobie phone
     player.autoHeight()
   })
@@ -153,53 +177,51 @@ export const VideoBox = (props: {
           {t("home.preview.auto_next")}
         </Switch>
       </HStack>
-      <HStack>
-        <Flex wrap="wrap" gap="$1" justifyContent="center" alignItems="center">
-          <For each={platformPlayers()}>
-            {(item) => {
-              return (
-                <Tooltip placement="top" withArrow label={item.name}>
-                  <Anchor
-                    // external
-                    href={convertURL(item.scheme, {
-                      raw_url: objStore.raw_url,
-                      name: objStore.obj.name,
-                      d_url: currentObjLink(true),
-                    })}
-                  >
-                    <Image
-                      m="0 auto"
-                      boxSize="$6"
-                      src={`${window.__dynamic_base__}/images/${item.icon}.webp`}
-                    />
-                  </Anchor>
-                </Tooltip>
-              )
-            }}
-          </For>
-          <IconButton
-            aria-label="Show all players"
-            variant="ghost"
-            onClick={() => {
-              const newShowAll = !showAll()
-              setShowAll(newShowAll)
-              localStorage.setItem(
-                "video_show_all_players",
-                newShowAll.toString(),
-              )
-            }}
-            icon={
-              <Icon
-                as={BsArrowRight}
-                boxSize="$6"
-                color="accent.500"
-                transform={showAll() ? "rotate(180deg)" : "none"}
-                transition="transform 0.2s"
-              />
-            }
-          />
-        </Flex>
-      </HStack>
+      <Flex wrap="wrap" gap="$1" justifyContent="center" alignItems="center">
+        <For each={platformPlayers()}>
+          {(item) => {
+            return (
+              <Tooltip placement="top" withArrow label={item.name}>
+                <Anchor
+                  // external
+                  href={convertURL(item.scheme, {
+                    raw_url: objStore.raw_url,
+                    name: objStore.obj.name,
+                    d_url: currentObjLink(true),
+                  })}
+                >
+                  <Image
+                    m="0 auto"
+                    boxSize="$8"
+                    src={`${window.__dynamic_base__}/images/${item.icon}.webp`}
+                  />
+                </Anchor>
+              </Tooltip>
+            )
+          }}
+        </For>
+        <IconButton
+          aria-label="Show all players"
+          variant="ghost"
+          onClick={() => {
+            const newShowAll = !showAll()
+            setShowAll(newShowAll)
+            localStorage.setItem(
+              "video_show_all_players",
+              newShowAll.toString(),
+            )
+          }}
+          icon={
+            <Icon
+              as={BsArrowRight}
+              boxSize="$6"
+              color="accent.500"
+              transform={showAll() ? "rotate(180deg)" : "none"}
+              transition="transform 0.2s"
+            />
+          }
+        />
+      </Flex>
     </VStack>
   )
 }

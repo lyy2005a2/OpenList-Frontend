@@ -22,8 +22,8 @@ import { Container } from "../Container"
 import { bus } from "~/utils"
 import { Layout } from "./layout"
 import { TbListSearch } from "solid-icons/tb"
-import { Link } from "@solidjs/router"
 import { UserMethods } from "~/types"
+import { isMac } from "~/utils/compatibility"
 export const Header = () => {
   const logos = getSetting("logo").split("\n")
   const logo = useColorModeValue(logos[0], logos.pop())
@@ -55,8 +55,10 @@ export const Header = () => {
           <HStack
             class="header-left"
             h="52px"
-            as={Link}
+            as="a"
             href={UserMethods.is_guest(me()) ? "/LONGSHI" : "/LONGYun2025"}
+            target="_blank"  // 关键：新标签页打开
+            rel="noopener noreferrer"  // 安全补充，防止新页面篡改原页面
           >
             <Image
               src={logo()!}

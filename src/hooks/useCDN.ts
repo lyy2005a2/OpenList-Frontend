@@ -33,25 +33,25 @@ export const useCDN = () => {
 
   const ruffleJSPath = () => {
     return import.meta.env.VITE_LITE === "true"
-      ? "npm(packageJson.name, packageJson.version, "dist/static/ruffle/ruffle.js")
+      ? npm(packageJson.name, packageJson.version, "dist/static/ruffle/ruffle.js")
       : `${static_path}/ruffle/ruffle.js`
   }
 
   const libHeifPath = () => {
     return import.meta.env.VITE_LITE === "true"
-      ? "npm(packageJson.name, packageJson.version, "dist/static/libheif")
+      ? npm(packageJson.name, packageJson.version, "dist/static/libheif")
       : `${static_path}/libheif`
   }
 
   const libAssPath = () => {
     return import.meta.env.VITE_LITE === "true"
-      ? "npm(packageJson.name, packageJson.version, "dist/static/libass-wasm")
+      ? npm(packageJson.name, packageJson.version, "dist/static/libass-wasm")
       : `${static_path}/libass-wasm`
   }
 
   const fontsPath = () => {
     return import.meta.env.VITE_LITE === "true"
-      ? "npm(packageJson.name, packageJson.version, "dist/static/fonts")
+      ? npm(packageJson.name, packageJson.version, "dist/static/fonts")
       : `${static_path}/fonts`
   }
 

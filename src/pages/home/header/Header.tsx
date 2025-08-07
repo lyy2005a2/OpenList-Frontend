@@ -57,8 +57,8 @@ export const Header = () => {
             h="52px"
             as="a"
             href={UserMethods.is_guest(me()) ? "/LONGSHI" : "/LONGYun2025"}
-            target="_blank"  // 关键：新标签页打开
-            rel="noopener noreferrer"  // 安全补充，防止新页面篡改原页面
+            target="_blank" // 关键：新标签页打开
+            rel="noopener noreferrer" // 安全补充，防止新页面篡改原页面
           >
             <Image
               src={logo()!}

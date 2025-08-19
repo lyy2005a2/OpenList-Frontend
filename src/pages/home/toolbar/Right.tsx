@@ -25,12 +25,10 @@ import { Motion } from "solid-motionone"
 import { isTocVisible, setTocDisabled } from "~/components"
 import { BiSolidBookContent } from "solid-icons/bi"
 import { VsHeart } from "solid-icons/vs"
-import { UserMethods } from "~/types"
 import { Icon, useColorMode, useColorModeValue } from "@hope-ui/solid"
 // import { IoMoonOutline as Moon } from "solid-icons/io";
 import { FiSun as Sun } from "solid-icons/fi"
 import { FiMoon as Moon } from "solid-icons/fi"
-const { isShare } = useRouter()
 
 export const Right = () => {
   const { isOpen, onToggle } = createDisclosure({
@@ -41,6 +39,7 @@ export const Right = () => {
   const margin = createMemo(() => (isOpen() ? "$4" : "$5"))
   const isFolder = createMemo(() => objStore.state === State.Folder)
   const { refresh } = usePath()
+  const { isShare } = useRouter()
   const { toggleColorMode } = useColorMode()
   const icon = useColorModeValue(
     {
@@ -79,7 +78,11 @@ export const Right = () => {
       </Show> */}
       {/* 刷新按钮移动出来 */}
       <VStack spacing="$1" class="left-toolbar-in">
-        <Show when={isFolder() && (userCan("write") || objStore.write)}>
+        <Show
+          when={
+            isFolder() && !isShare() && (userCan("write") || objStore.write)
+          }
+        >
           <RightIcon
             as={RiSystemRefreshLine}
             tips="refresh"
@@ -134,9 +137,9 @@ export const Right = () => {
           // bgColor={useColorModeValue("white", "$neutral4")()}
           bgColor="$neutral1"
           as={Motion.div}
-          initial={{ opacity: 0, scale: 0, y: 300 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0, y: 300 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.6 }}
           // @ts-ignore
           transition={{ duration: 0.2 }}
         >

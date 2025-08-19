@@ -737,9 +737,8 @@
   },
   "OpenListShare": {
     "forward_archive_requests": "Forward archive requests",
-    "pwd": "Pwd",
-    "root_folder_path": "Root folder path",
-    "sid": "Sid",
+    "pwd": "Share code",
+    "sid": "Share ID",
     "url": "Url"
   },
   "PikPak": {

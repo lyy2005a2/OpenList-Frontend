@@ -20,7 +20,7 @@ import { operations } from "./operations"
 import { IoMagnetOutline } from "solid-icons/io"
 import { AiOutlineCloudUpload, AiOutlineSetting } from "solid-icons/ai"
 import { RiSystemRefreshLine } from "solid-icons/ri"
-import { usePath } from "~/hooks"
+import { usePath, useRouter } from "~/hooks"
 import { Motion } from "solid-motionone"
 import { isTocVisible, setTocDisabled } from "~/components"
 import { BiSolidBookContent } from "solid-icons/bi"
@@ -40,21 +40,7 @@ export const Right = () => {
   const margin = createMemo(() => (isOpen() ? "$4" : "$5"))
   const isFolder = createMemo(() => objStore.state === State.Folder)
   const { refresh } = usePath()
-  const { toggleColorMode } = useColorMode()
-  const icon = useColorModeValue(
-    {
-      size: "$8",
-      component: Moon,
-      p: "$0_5",
-    },
-    {
-      size: "$8",
-      component: Sun,
-      p: "$0_5",
-    },
-  )
-  // 到这里
-
+  const { isShare } = useRouter()
   return (
     <Box
       class="right-toolbar-box"
@@ -140,16 +126,20 @@ export const Right = () => {
           transition={{ duration: 0.2 }}
         >
           <VStack spacing="$1" class="right-toolbar-in">
-            <Show when={isFolder() && (userCan("write") || objStore.write)}>
-              {/* <Add /> */}
-              {/* 原本的刷新按钮隐藏了 */}
-              {/* <RightIcon
+            {/* <Add /> */}
+            {/* 原本的刷新按钮隐藏了 */}
+            {/* <RightIcon
                 as={RiSystemRefreshLine}
                 tips="refresh"
                 onClick={() => {
                   refresh(undefined, true);
                 }}
               /> */}
+            <Show
+              when={
+                isFolder() && !isShare() && (userCan("write") || objStore.write)
+              }
+            >
               <RightIcon
                 as={AiOutlineCloudUpload}
                 tips="upload"
@@ -188,7 +178,9 @@ export const Right = () => {
                 }}
               />
             </Show>
-            <Show when={isFolder() && userCan("offline_download")}>
+            <Show
+              when={isFolder() && !isShare() && userCan("offline_download")}
+            >
               <RightIcon
                 as={IoMagnetOutline}
                 pl="0"

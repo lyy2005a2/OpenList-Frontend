@@ -92,10 +92,10 @@
     "list": "List",
     "responsive": "Responsive"
   },
-  "share_archive_preview": "Share archive preview",
-  "share_force_proxy": "Share force proxy",
+  "share_archive_preview": "Allow previewing sharing archives",
+  "share_force_proxy": "Force proxy sharing files",
   "share_icon": "Share icon",
-  "share_preview": "Share preview",
+  "share_preview": "Allow previewing sharing files",
   "share_summary_content": "Share summary content",
   "sign_all": "Sign all",
   "site_title": "Site title",

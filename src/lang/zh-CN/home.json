@@ -86,6 +86,7 @@
       "incorrect_password": "密码错误",
       "extract_header": "解压 {{path}} 到..."
     },
+    "share": "分享",
     "copy_link": "复制链接",
     "preview_page": "预览页面",
     "down_link": "下载链接",
@@ -156,7 +157,7 @@
     "show_folder_in_image_view_options": {
       "top": "上方",
       "bottom": "下方",
-      "none": "无"
+      "none": "隐藏"
     },
     "global_default_layout": "全局默认布局",
     "global_default_layout_options": {
@@ -173,7 +174,12 @@
     "grid_item_size": "网格视图图片尺寸",
     "show_sidebar": "显示侧边栏",
     "show_sidebar_options": {
-      "none": "无",
+      "none": "隐藏",
+      "visible": "显示"
+    },
+    "show_count_msg": "显示文件计数信息",
+    "show_count_msg_options": {
+      "none": "隐藏",
       "visible": "显示"
     },
     "list_item_filename_overflow": "列表项目文件名过长",

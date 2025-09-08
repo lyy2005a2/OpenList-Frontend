@@ -59,6 +59,11 @@ export const initialLocalSettings = [
     options: ["direct", "dblclick", "disable_while_checked"],
     hidden: false,
   },
+  {
+    key: "editor_font_size",
+    default: "14",
+    type: "number",
+  },
 ]
 
 export type LocalSetting = (typeof initialLocalSettings)[number]

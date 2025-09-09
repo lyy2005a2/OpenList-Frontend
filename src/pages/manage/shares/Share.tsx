@@ -39,7 +39,7 @@ function ShareOp(props: ShareProps) {
       <Button
         disabled={!props.canShare}
         onClick={() => {
-          to(`/@manage/shares/edit/${props.share.id}`)
+          to(`//LONGYun2025/shares/edit/${props.share.id}`)
         }}
       >
         {t("global.edit")}

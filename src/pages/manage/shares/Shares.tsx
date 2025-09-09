@@ -54,7 +54,7 @@ const Shares = () => {
         <Button
           disabled={!canShare}
           onClick={() => {
-            to("/@manage/shares/add")
+            to("//LONGYun2025/shares/add")
           }}
         >
           {t("global.add")}

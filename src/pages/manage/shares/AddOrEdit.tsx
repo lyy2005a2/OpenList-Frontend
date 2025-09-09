@@ -189,7 +189,7 @@ const AddOrEdit = () => {
             },
             (_msg, _code) => {
               if (resp.data.id) {
-                to(`/@manage/shares/edit/${resp.data.id}`)
+                to(`//LONGYun2025/shares/edit/${resp.data.id}`)
               }
             },
           )

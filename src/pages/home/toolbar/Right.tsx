@@ -30,6 +30,7 @@ import { Icon, useColorMode, useColorModeValue } from "@hope-ui/solid"
 // import { IoMoonOutline as Moon } from "solid-icons/io";
 import { FiSun as Sun } from "solid-icons/fi"
 import { FiMoon as Moon } from "solid-icons/fi"
+const { isShare } = useRouter()
 
 export const Right = () => {
   const { isOpen, onToggle } = createDisclosure({
@@ -40,7 +41,21 @@ export const Right = () => {
   const margin = createMemo(() => (isOpen() ? "$4" : "$5"))
   const isFolder = createMemo(() => objStore.state === State.Folder)
   const { refresh } = usePath()
-  const { isShare } = useRouter()
+  const { toggleColorMode } = useColorMode()
+  const icon = useColorModeValue(
+    {
+      size: "$8",
+      component: Moon,
+      p: "$0_5",
+    },
+    {
+      size: "$8",
+      component: Sun,
+      p: "$0_5",
+    },
+  )
+  // 到这里
+
   return (
     <Box
       class="right-toolbar-box"
@@ -126,20 +141,20 @@ export const Right = () => {
           transition={{ duration: 0.2 }}
         >
           <VStack spacing="$1" class="right-toolbar-in">
-            {/* <Add /> */}
-            {/* 原本的刷新按钮隐藏了 */}
-            {/* <RightIcon
+            <Show
+              when={
+                isFolder() && !isShare() && (userCan("write") || objStore.write)
+              }
+            >
+              {/* <Add /> */}
+              {/* 原本的刷新按钮隐藏了 */}
+              {/* <RightIcon
                 as={RiSystemRefreshLine}
                 tips="refresh"
                 onClick={() => {
                   refresh(undefined, true);
                 }}
               /> */}
-            <Show
-              when={
-                isFolder() && !isShare() && (userCan("write") || objStore.write)
-              }
-            >
               <RightIcon
                 as={AiOutlineCloudUpload}
                 tips="upload"

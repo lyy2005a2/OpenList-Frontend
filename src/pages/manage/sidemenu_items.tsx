@@ -177,7 +177,7 @@ export const side_menu_items: SideMenuItem[] = [
   {
     title: "manage.sidemenu.shares",
     icon: CgShare,
-    to: "//LONGYun2025/shares",
+    to: "/LONGYun2025/shares",
     role: UserRole.GENERAL,
     component: lazy(() => import("./shares/Shares")),
   },

@@ -200,6 +200,13 @@ export const side_menu_items: SideMenuItem[] = [
     component: lazy(() => import("./backup-restore")),
   },
   {
+    title: "manage.sidemenu.about",
+    icon: BsFront,
+    to: "/LONGYun2025/about",
+    role: UserRole.GUEST,
+    component: lazy(() => import("./About")),
+  },
+  {
     title: "manage.sidemenu.home",
     icon: IoHome,
     to: "/",

@@ -19,7 +19,7 @@ log_warning() { echo -e "${YELLOW}$1${NC}"; }
 log_step() { echo -e "${PURPLE}$1${NC}"; }
 log_build() { echo -e "${BLUE}$1${NC}"; }
 
-#  Main function to run the build script
+# Main function to run the build script
 main() {
     parse_args "$@"
     set_defaults

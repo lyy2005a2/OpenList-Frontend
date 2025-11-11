@@ -58,9 +58,10 @@
   "max_index_depth-tips": "Max depth of index",
   "max_server_download_speed": "Max server download speed",
   "max_server_upload_speed": "Max server upload speed",
-  "ocr_api": "OCR API",
-  "offline_download_task_threads_num": "Offline download task threads number",
-  "offline_download_transfer_task_threads_num": "Offline download transfer task threads number",
+  "non_efs_zip_encoding": "Non efs zip encoding",
+  "ocr_api": "Ocr api",
+  "offline_download_task_threads_num": "Offline download task threads num",
+  "offline_download_transfer_task_threads_num": "Offline download transfer task threads num",
   "package_download": "Package download",
   "pagination_type": "Pagination type",
   "pagination_types": {
@@ -135,5 +136,5 @@
   "version": "Version",
   "video_autoplay": "Autoplay video",
   "video_types": "Video types",
-  "webauthn_login_enabled": "WebAuthn login enabled"
+  "webauthn_login_enabled": "Webauthn login enabled"
 }

@@ -191,7 +191,7 @@ export const side_menu_items: SideMenuItem[] = [
     title: "manage.sidemenu.indexes",
     icon: BsSearch,
     to: "/LONGYun2025/indexes",
-    component: lazy(() => import("./indexes/indexes")),
+    component: lazy(() => import("./indexes/index_page")),
   },
   {
     title: "manage.sidemenu.backup-restore",

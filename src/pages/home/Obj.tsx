@@ -72,7 +72,7 @@ export const Obj = () => {
   })
 
   const storageErrorActions = () => (
-    <Button colorScheme="accent" onClick={() => to("/@manage/storages")}>
+    <Button colorScheme="accent" onClick={() => to("/LONGYun2025/storages")}>
       {t("global.go_to_storages")}
     </Button>
   )

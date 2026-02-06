@@ -1,7 +1,14 @@
 {
   "common": {
+    "export": "导出",
+    "export_title": "将存储导出为 JSON",
+    "export_tips": "请复制上方的存储 JSON 以备份。",
+    "import": "导入",
+    "import_title": "从 JSON 导入存储",
+    "import_success": "导入成功！",
+    "import_tips": "请粘贴已导出的存储 JSON 以导入。",
     "mount_path": "挂载路径",
-    "mount_path-tips": "要挂载到的路径，它是唯一的，不能重复",
+    "mount_path-tips": "要挂载的路径，必须是唯一且不能重复",
     "driver": "驱动",
     "order": "序号",
     "order-tips": "用于排序",
@@ -11,18 +18,18 @@
     "cache_expiration": "缓存过期时间",
     "cache_expiration-tips": "此存储的缓存过期时间（分钟）",
     "custom_cache_policies": "自定义缓存策略",
-    "custom_cache_policies-tips": "路径及其以分钟计的缓存时间",
-    "down_proxy_url": "下载代理 URL",
+    "custom_cache_policies-tips": "此存储的缓存过期时间（分钟）",
+    "down_proxy_url": "下载代理网址",
     "disable_proxy_sign": "禁用代理签名",
-    "disable_proxy_sign-tips": "禁用下载代理 URL 的签名",
-    "web_proxy": "Web 代理",
+    "disable_proxy_sign-tips": "禁用下载代理网址的签名",
+    "web_proxy": "网页代理",
     "webdav_policy": "WebDAV 策略",
-    "proxy_range": "代理 Range",
+    "proxy_range": "代理范围",
     "proxy_range-tips": "需要启用代理",
     "webdav_policys": {
       "302_redirect": "302 重定向",
-      "use_proxy_url": "使用代理地址",
-      "native_proxy": "本地代理"
+      "use_proxy_url": "使用代理网址",
+      "native_proxy": "本机代理"
     },
     "order_by": "排序依据",
     "order_bys": {

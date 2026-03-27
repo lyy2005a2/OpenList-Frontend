@@ -57,7 +57,7 @@ export const Right = () => {
 
   return (
     <Box
-      class="right-toolbar-box"
+      class="left-toolbar-box"
       pos="fixed"
       right={margin()}
       bottom={margin()}
@@ -120,8 +120,7 @@ export const Right = () => {
         fallback={
           <RightIcon
             class="toolbar-toggle"
-            tips="more"
-            as={VsHeart}
+            as={CgMoreO}
             onClick={() => {
               onToggle()
             }}
@@ -129,7 +128,7 @@ export const Right = () => {
         }
       >
         <VStack
-          class="right-toolbar"
+          class="left-toolbar"
           p="$1"
           rounded="$lg"
           spacing="$1"
@@ -143,10 +142,13 @@ export const Right = () => {
           // @ts-ignore
           transition={{ duration: 0.2 }}
         >
-          <VStack spacing="$1" class="right-toolbar-in">
+          <VStack spacing="$1" class="left-toolbar-in">
             <Show
               when={
-                isFolder() && !isShare() && (userCan("write") || objStore.write)
+                isFolder() &&
+                !isShare() &&
+                (userCan("write_content") || objStore.write_content_bypass) &&
+                objStore.write
               }
             >
               {/* <Add /> */}
@@ -180,6 +182,12 @@ export const Right = () => {
                   bus.emit("tool", "mkdir")
                 }}
               />
+            </Show>
+            <Show
+              when={
+                isFolder() && !isShare() && userCan("move") && objStore.write
+              }
+            >
               <RightIcon
                 as={operations.recursive_move.icon}
                 tips="recursive_move"
@@ -187,6 +195,25 @@ export const Right = () => {
                   bus.emit("tool", "recursiveMove")
                 }}
               />
+            </Show>
+            <Show
+              when={
+                isFolder() && !isShare() && userCan("delete") && objStore.write
+              }
+            >
+              <RightIcon
+                as={operations.remove_empty_directory.icon}
+                tips="remove_empty_directory"
+                onClick={() => {
+                  bus.emit("tool", "removeEmptyDirectory")
+                }}
+              />
+            </Show>
+            <Show
+              when={
+                isFolder() && !isShare() && userCan("rename") && objStore.write
+              }
+            >
               <RightIcon
                 as={operations.batch_rename.icon}
                 tips="batch_rename"
@@ -197,7 +224,28 @@ export const Right = () => {
               />
             </Show>
             <Show
-              when={isFolder() && !isShare() && userCan("offline_download")}
+              when={
+                isFolder() &&
+                !isShare() &&
+                (userCan("write_content") || objStore.write_content_bypass) &&
+                objStore.write
+              }
+            >
+              <RightIcon
+                as={AiOutlineCloudUpload}
+                tips="upload"
+                onClick={() => {
+                  bus.emit("tool", "upload")
+                }}
+              />
+            </Show>
+            <Show
+              when={
+                isFolder() &&
+                !isShare() &&
+                userCan("offline_download") &&
+                objStore.write
+              }
             >
               <RightIcon
                 as={IoMagnetOutline}
@@ -217,7 +265,6 @@ export const Right = () => {
                 }}
               />
             </Show>
-
             <RightIcon
               tips="toggle_checkbox"
               as={TbCheckbox}
@@ -225,13 +272,13 @@ export const Right = () => {
             />
             <RightIcon
               as={AiOutlineSetting}
-              tips="browser_setting"
+              tips="local_settings"
               onClick={() => {
                 bus.emit("tool", "local_settings")
               }}
             />
           </VStack>
-          <RightIcon tips="close" as={VsHeart} onClick={onToggle} />
+          <RightIcon tips="more" as={CgMoreO} onClick={onToggle} />
         </VStack>
       </Show>
     </Box>

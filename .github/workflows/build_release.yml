@@ -178,19 +178,16 @@ jobs:
             exit 1
           fi
 
-      - name: Publish npm
+      - name: Publish npm (Trusted publishing)
         run: |
-          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
-
-          if [ -z "${{ secrets.NPM_TOKEN }}" ]; then
-            echo "NPM_TOKEN not set, performing dry run"
-            pnpm publish --dry-run --no-git-checks --access public
+          if [ "${{ secrets[format('{0}', 'NPM_PUBLISH')] }}" = "yes" ]; then
+            echo "NPM_PUBLISH=yes, publishing to npm with trusted publishing..."
+            pnpm publish --no-git-checks --access public --provenance
           else
-            echo "Publishing to npm..."
-            pnpm publish --no-git-checks --access public
+            echo "NPM_PUBLISH is not yes, performing dry run"
+            pnpm publish --dry-run --no-git-checks --access public
           fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 permissions:
   contents: write
+  id-token: write

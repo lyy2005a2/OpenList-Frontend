@@ -1,12 +1,12 @@
 {
   "common": {
     "export": "导出",
-    "export_title": "将存储导出为 JSON",
-    "export_tips": "请复制上方的存储 JSON 以备份。",
+    "export_title": "导出存储为 JSON",
+    "export_tips": "请复制上面的存储 JSON。",
     "import": "导入",
     "import_title": "从 JSON 导入存储",
     "import_success": "导入成功！",
-    "import_tips": "请粘贴已导出的存储 JSON 以导入。",
+    "import_tips": "粘贴导出的 JSON 存储以导入。",
     "mount_path": "挂载路径",
     "mount_path-tips": "要挂载的路径，必须是唯一且不能重复",
     "driver": "驱动",

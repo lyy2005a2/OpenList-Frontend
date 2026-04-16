@@ -105,7 +105,7 @@ export const Right = () => {
           <RightIcon
             // 图标已更换
             as={icon().component}
-            // tips="白天夜间模式切换"
+            tips="白天/夜间模式切换"
             onClick={toggleColorMode}
           />
         }
@@ -120,6 +120,7 @@ export const Right = () => {
         fallback={
           <RightIcon
             class="toolbar-toggle"
+            tips="more"
             as={CgMoreO}
             onClick={() => {
               onToggle()
@@ -160,13 +161,6 @@ export const Right = () => {
                   refresh(undefined, true);
                 }}
               /> */}
-              <RightIcon
-                as={AiOutlineCloudUpload}
-                tips="upload"
-                onClick={() => {
-                  bus.emit("tool", "upload")
-                }}
-              />
               <RightIcon
                 as={operations.new_file.icon}
                 tips="new_file"

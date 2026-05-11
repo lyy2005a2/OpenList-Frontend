@@ -6,6 +6,7 @@ import {
 } from "@hope-ui/solid"
 import { createMemo, Show } from "solid-js"
 import { RightIcon } from "./Icon"
+import { CgMoreO } from "solid-icons/cg"
 import { TbCheckbox } from "solid-icons/tb"
 import {
   objStore,
@@ -80,7 +81,10 @@ export const Right = () => {
       <VStack spacing="$1" class="left-toolbar-in">
         <Show
           when={
-            isFolder() && !isShare() && (userCan("write") || objStore.write)
+            isFolder() &&
+            !isShare() &&
+            (userCan("write_content") || objStore.write_content_bypass) &&
+            objStore.write
           }
         >
           <RightIcon
@@ -272,7 +276,7 @@ export const Right = () => {
               }}
             />
           </VStack>
-          <RightIcon tips="more" as={CgMoreO} onClick={onToggle} />
+          <RightIcon tips="close" as={VsHeart} onClick={onToggle} />
         </VStack>
       </Show>
     </Box>

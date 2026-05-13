@@ -140,6 +140,7 @@
     "username": "Username"
   },
   "189CloudPC": {
+    "access_token": "Access token",
     "family_id": "Family id",
     "family_transfer": "Family transfer",
     "login_type": "Login type",

@@ -143,6 +143,8 @@
     "access_token": "Access token",
     "family_id": "Family id",
     "family_transfer": "Family transfer",
+    "generate_torrent": "Generate torrent",
+    "generate_torrent-tips": "Generate torrent file with CAS extension after upload",
     "login_type": "Login type",
     "login_types": {
       "password": "Password",

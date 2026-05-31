@@ -596,6 +596,19 @@
     "root_folder_path": "Root folder path",
     "use_online_api": "Use online api"
   },
+  "Emby": {
+    "api_key": "Api key",
+    "link_method": "Link method",
+    "link_methods": {
+      "download": "Download",
+      "stream": "Stream"
+    },
+    "password": "Password",
+    "root_folder_id": "Root folder id",
+    "url": "Url",
+    "user_id": "User id",
+    "username": "Username"
+  },
   "FTP": {
     "address": "Address",
     "encoding": "Encoding",
@@ -1499,6 +1512,7 @@
     },
     "DoubaoShare": {},
     "Dropbox": {},
+    "Emby": {},
     "FTP": {},
     "FebBox": {},
     "FeijiPan": {},
@@ -1591,6 +1605,7 @@
     "DoubaoNew": "DoubaoNew",
     "DoubaoShare": "DoubaoShare",
     "Dropbox": "Dropbox",
+    "Emby": "Emby",
     "FTP": "FTP",
     "FebBox": "FebBox",
     "FeijiPan": "FeijiPan",

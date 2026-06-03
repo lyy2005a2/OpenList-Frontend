@@ -140,8 +140,11 @@
     "username": "用户名"
   },
   "189CloudPC": {
+    "access_token": "访问令牌",
     "family_id": "家庭 ID",
     "family_transfer": "家庭传输",
+    "generate_torrent": "生成种子",
+    "generate_torrent-tips": "上传后生成带有 CAS 扩展名的种子文件",
     "login_type": "登录类型",
     "login_types": {
       "password": "密码",
@@ -592,6 +595,19 @@
     "refresh_token": "刷新令牌",
     "root_folder_path": "根文件夹路径",
     "use_online_api": "使用在线 API"
+  },
+  "Emby": {
+    "api_key": "API 密钥",
+    "link_method": "链接方式",
+    "link_methods": {
+      "download": "下载",
+      "stream": "流式"
+    },
+    "password": "密码",
+    "root_folder_id": "根文件夹 ID",
+    "url": "URL",
+    "user_id": "用户 ID",
+    "username": "用户名"
   },
   "FTP": {
     "address": "地址",
@@ -1383,6 +1399,7 @@
   },
   "WPS": {
     "cookie": "Cookie",
+    "custom_ua": "自定义 User Agent",
     "mode": "类型",
     "modes": {
       "Business": "商业版",
@@ -1495,6 +1512,7 @@
     },
     "DoubaoShare": {},
     "Dropbox": {},
+    "Emby": {},
     "FTP": {},
     "FebBox": {},
     "FeijiPan": {},
@@ -1587,6 +1605,7 @@
     "DoubaoNew": "豆包云盘 新",
     "DoubaoShare": "豆包分享",
     "Dropbox": "Dropbox",
+    "Emby": "Emby",
     "FTP": "FTP",
     "FebBox": "FebBox",
     "FeijiPan": "飞机盘",

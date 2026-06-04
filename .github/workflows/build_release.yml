@@ -5,7 +5,6 @@
 # - Update the `package.json` version to the specified version (when triggered
 #   by `workflow_dispatch`), commit the changes and tag it.
 # - Upload the release assets to GitHub.
-# - Publish the package to npm.
 #
 # # Usage
 #
@@ -164,33 +163,33 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Prepare for npm
-        run: |
-          # Delete the generated dist tarball
-          rm -f dist/openlist-frontend-dist-v*.tar.gz
-          rm -f lite-dist/openlist-frontend-dist-lite-v*.tar.gz
-          # Copy the lite version
-          mkdir dist/lite
-          cp -r lite-dist/. dist/lite/
+      # - name: Prepare for npm
+      #   run: |
+      #     # Delete the generated dist tarball
+      #     rm -f dist/openlist-frontend-dist-v*.tar.gz
+      #     rm -f lite-dist/openlist-frontend-dist-lite-v*.tar.gz
+      #     # Copy the lite version
+      #     mkdir dist/lite
+      #     cp -r lite-dist/. dist/lite/
 
-          if ! jq -e '.name and .version' package.json > /dev/null; then
-            echo "Error: Invalid package.json"
-            exit 1
-          fi
+      #     if ! jq -e '.name and .version' package.json > /dev/null; then
+      #       echo "Error: Invalid package.json"
+      #       exit 1
+      #     fi
 
-      - name: Publish npm (Trusted publishing)
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+      # - name: Publish npm (Trusted publishing)
+      #   run: |
+      #     echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
 
-          if [ -z "${{ secrets.NPM_TOKEN }}" ]; then
-            echo "NPM_TOKEN not set, performing dry run"
-            pnpm publish --dry-run --no-git-checks --access public
-          else
-            echo "Publishing to npm..."
-            pnpm publish --no-git-checks --access public
-          fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #     if [ -z "${{ secrets.NPM_TOKEN }}" ]; then
+      #       echo "NPM_TOKEN not set, performing dry run"
+      #       pnpm publish --dry-run --no-git-checks --access public
+      #     else
+      #       echo "Publishing to npm..."
+      #       pnpm publish --no-git-checks --access public
+      #     fi
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 permissions:
   contents: write

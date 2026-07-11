@@ -548,7 +548,9 @@
     "root_folder_path": "Root folder path",
     "secret_access_key": "Secret access key",
     "session_token": "Session token",
-    "sign_url_expire": "Sign url expire"
+    "sign_url_expire": "Sign url expire",
+    "user_agent": "User agent",
+    "user_agent-tips": "Custom User-Agent for S3 requests."
   },
   "Doubao": {
     "cookie": "Cookie",
@@ -1077,7 +1079,9 @@
     "root_folder_path": "Root folder path",
     "secret_access_key": "Secret access key",
     "session_token": "Session token",
-    "sign_url_expire": "Sign url expire"
+    "sign_url_expire": "Sign url expire",
+    "user_agent": "User agent",
+    "user_agent-tips": "Custom User-Agent for S3 requests."
   },
   "SFTP": {
     "address": "Address",

@@ -35,20 +35,17 @@ const OtherSettings = () => {
   const [guangYaPanTempDir, setGuangYaPanTempDir] = createSignal("")
   const [token, setToken] = createSignal("")
   const [settings, setSettings] = createSignal<SettingItem[]>([])
-  const [settingsLoading, settingsData] = useFetch(
-    (): PResp<SettingItem[]> =>
-      r.get(`/admin/setting/list?groups=${Group.ARIA2},${Group.SINGLE}`),
+  const [settingsLoading, settingsData] = useFetch((): PResp<SettingItem[]> =>
+    r.get(`/admin/setting/list?groups=${Group.ARIA2},${Group.SINGLE}`),
   )
-  const [setAria2Loading, setAria2] = useFetch(
-    (): PResp<string> =>
-      r.post("/admin/setting/set_aria2", { uri: uri(), secret: secret() }),
+  const [setAria2Loading, setAria2] = useFetch((): PResp<string> =>
+    r.post("/admin/setting/set_aria2", { uri: uri(), secret: secret() }),
   )
-  const [setQbitLoading, setQbit] = useFetch(
-    (): PResp<string> =>
-      r.post("/admin/setting/set_qbit", {
-        url: qbitUrl(),
-        seedtime: qbitSeedTime(),
-      }),
+  const [setQbitLoading, setQbit] = useFetch((): PResp<string> =>
+    r.post("/admin/setting/set_qbit", {
+      url: qbitUrl(),
+      seedtime: qbitSeedTime(),
+    }),
   )
   const [setTransmissionLoading, setTransmission] = useFetch(
     (): PResp<string> =>
@@ -57,48 +54,41 @@ const OtherSettings = () => {
         seedtime: transmissionSeedTime(),
       }),
   )
-  const [set123PanLoading, set123Pan] = useFetch(
-    (): PResp<string> =>
-      r.post("/admin/setting/set_123_pan", {
-        temp_dir: pan123TempDir(),
-      }),
+  const [set123PanLoading, set123Pan] = useFetch((): PResp<string> =>
+    r.post("/admin/setting/set_123_pan", {
+      temp_dir: pan123TempDir(),
+    }),
   )
-  const [set115Loading, set115] = useFetch(
-    (): PResp<string> =>
-      r.post("/admin/setting/set_115", {
-        temp_dir: pan115TempDir(),
-      }),
+  const [set115Loading, set115] = useFetch((): PResp<string> =>
+    r.post("/admin/setting/set_115", {
+      temp_dir: pan115TempDir(),
+    }),
   )
-  const [set115OpenLoading, set115Open] = useFetch(
-    (): PResp<string> =>
-      r.post("/admin/setting/set_115_open", {
-        temp_dir: pan115OpenTempDir(),
-      }),
+  const [set115OpenLoading, set115Open] = useFetch((): PResp<string> =>
+    r.post("/admin/setting/set_115_open", {
+      temp_dir: pan115OpenTempDir(),
+    }),
   )
-  const [set123OpenLoading, set123Open] = useFetch(
-    (): PResp<string> =>
-      r.post("/admin/setting/set_123_open", {
-        temp_dir: pan123OpenTempDir(),
-        callback_url: pan123OpenCallbackUrl(),
-      }),
+  const [set123OpenLoading, set123Open] = useFetch((): PResp<string> =>
+    r.post("/admin/setting/set_123_open", {
+      temp_dir: pan123OpenTempDir(),
+      callback_url: pan123OpenCallbackUrl(),
+    }),
   )
-  const [setPikPakLoading, setPikPak] = useFetch(
-    (): PResp<string> =>
-      r.post("/admin/setting/set_pikpak", {
-        temp_dir: pikpakTempDir(),
-      }),
+  const [setPikPakLoading, setPikPak] = useFetch((): PResp<string> =>
+    r.post("/admin/setting/set_pikpak", {
+      temp_dir: pikpakTempDir(),
+    }),
   )
-  const [setThunderLoading, setThunder] = useFetch(
-    (): PResp<string> =>
-      r.post("/admin/setting/set_thunder", {
-        temp_dir: thunderTempDir(),
-      }),
+  const [setThunderLoading, setThunder] = useFetch((): PResp<string> =>
+    r.post("/admin/setting/set_thunder", {
+      temp_dir: thunderTempDir(),
+    }),
   )
-  const [setThunderXLoading, setThunderX] = useFetch(
-    (): PResp<string> =>
-      r.post("/admin/setting/set_thunderx", {
-        temp_dir: thunderXTempDir(),
-      }),
+  const [setThunderXLoading, setThunderX] = useFetch((): PResp<string> =>
+    r.post("/admin/setting/set_thunderx", {
+      temp_dir: thunderXTempDir(),
+    }),
   )
   const [setThunderBrowserLoading, setThunderBrowser] = useFetch(
     (): PResp<string> =>
@@ -106,11 +96,10 @@ const OtherSettings = () => {
         temp_dir: thunderBrowserTempDir(),
       }),
   )
-  const [setGuangYaPanLoading, setGuangYaPan] = useFetch(
-    (): PResp<string> =>
-      r.post("/admin/setting/set_guangyapan", {
-        temp_dir: guangYaPanTempDir(),
-      }),
+  const [setGuangYaPanLoading, setGuangYaPan] = useFetch((): PResp<string> =>
+    r.post("/admin/setting/set_guangyapan", {
+      temp_dir: guangYaPanTempDir(),
+    }),
   )
   const refresh = async () => {
     const resp = await settingsData()
@@ -158,8 +147,8 @@ const OtherSettings = () => {
     })
   }
   refresh()
-  const [resetTokenLoading, resetToken] = useFetch(
-    (): PResp<string> => r.post("/admin/setting/reset_token"),
+  const [resetTokenLoading, resetToken] = useFetch((): PResp<string> =>
+    r.post("/admin/setting/reset_token"),
   )
   const { copy } = useUtil()
 

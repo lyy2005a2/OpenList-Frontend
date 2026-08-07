@@ -62,6 +62,7 @@ export const Right = () => {
       pos="fixed"
       right={margin()}
       bottom={margin()}
+      zIndex="calc($modal - 1)"
     >
       {/* 将设置移动出来,已经没用了这个.... */}
       {/* <Show

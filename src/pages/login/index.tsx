@@ -298,7 +298,7 @@ const Login = () => {
             <Text
               color="$success9"
               as={Link}
-              href={`https://long2024.cn/404.html`}
+              href={`https://long2025.top/wall/all`}
             >
               暂不提供非管理员登录！
             </Text>

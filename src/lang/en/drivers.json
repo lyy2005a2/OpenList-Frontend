@@ -111,6 +111,12 @@
   "139Yun": {
     "authorization": "Authorization",
     "authorization-tips": "Authorization can be used alone. If empty, use mail_cookies alone for fast login, or mail_cookies + username + password for full login fallback.",
+    "client_type": "Client type",
+    "client_type-tips": "Client type reported to the personal cloud API. web (9) allows uploading files up to 50 GB; pc (13) raises the single file upload limit to 500 GB.",
+    "client_types": {
+      "pc": "Pc",
+      "web": "Web"
+    },
     "cloud_id": "Cloud id",
     "custom_upload_part_size": "Custom upload part size",
     "custom_upload_part_size-tips": "0 for auto",

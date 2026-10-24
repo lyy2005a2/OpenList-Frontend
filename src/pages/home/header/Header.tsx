@@ -1,30 +1,40 @@
 import {
+  Box,
   HStack,
   useColorModeValue,
   Image,
   Center,
+  Icon,
+  Kbd,
   CenterProps,
   IconButton,
 } from "@hope-ui/solid"
 import { Show, Switch, Match, createMemo } from "solid-js"
+import { changeColor } from "seemly"
+import { useRouter } from "~/hooks"
 import {
   getMainColor,
-  layout,
   getSetting,
   local,
   objStore,
   State,
+  layout,
   me,
 } from "~/store"
-import { changeColor } from "seemly"
+import { mediaEnabled } from "~/store/media"
+import { MediaSidebarTrigger } from "~/components/MediaSidebar"
+import { TbListSearch } from "solid-icons/tb"
 import { CenterLoading } from "~/components"
 import { Container } from "../Container"
 import { bus } from "~/utils"
 import { Layout } from "./layout"
-import { TbListSearch } from "solid-icons/tb"
 import { UserMethods } from "~/types"
 import { isMac } from "~/utils/compatibility"
-export const Header = () => {
+
+export const Header = (props: { flush?: boolean } = {}) => {
+  const { pathname } = useRouter()
+  // 媒体库页面有自己的视图切换，文件列表的布局切换对这里无意义
+  const isMediaPage = () => pathname().startsWith("/@media")
   const logos = getSetting("logo").split("\n")
   const logo = useColorModeValue(logos[0], logos.pop())
 
@@ -37,114 +47,112 @@ export const Header = () => {
     }
   })
 
-  return (
-    <Center
-      {...stickyProps}
-      bgColor="$background"
-      class="header"
+  const content = () => (
+    <HStack
+      px="calc(2% + 0.5rem)"
+      py="$2"
       w="$full"
-      // shadow="$md"
+      justifyContent="space-between"
     >
-      <Container>
+      <HStack class="header-left" h="44px" spacing="$2">
+        <Show when={mediaEnabled()}>
+          <MediaSidebarTrigger />
+        </Show>
         <HStack
-          px="calc(2% + 0.5rem)"
-          py="$2"
-          w="$full"
-          justifyContent="space-between"
+          as="a"
+          href={UserMethods.is_guest(me()) ? "/LONGSHI" : "/LONGYun2025"}
+          target="_blank"
+          rel="noopener noreferrer"
+          h="$full"
         >
-          <HStack
-            class="header-left"
-            h="52px"
-            as="a"
-            href={UserMethods.is_guest(me()) ? "/LONGSHI" : "/LONGYun2025"}
-            target="_blank" // 关键：新标签页打开
-            rel="noopener noreferrer" // 安全补充，防止新页面篡改原页面
-          >
-            <Image
-              src={logo()!}
-              h="$full"
-              w="auto"
-              fallback={<CenterLoading />}
-            />
-          </HStack>
-          <HStack class="header-right" spacing="$2">
-            <Show when={objStore.state === State.Folder}>
-              <IconButton
-                aria-label="Search"
-                color={getMainColor()}
-                bgColor={changeColor(getMainColor(), { alpha: 0.05 })}
-                _hover={{
-                  bgColor: changeColor(getMainColor(), { alpha: 0.2 }),
-                }}
-                compact
-                size="lg"
-                icon={
-                  <Switch>
-                    <Match when={layout() === "list"}>
-                      <TbListSearch />
-                    </Match>
-                    <Match when={layout() === "grid"}>
-                      <svg
-                        fill="none"
-                        stroke-width="2"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="icon icon-tabler icon-tabler-device-ipad-horizontal-search"
-                        width="1em"
-                        height="1em"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        style="overflow: visible; color: currentcolor;"
-                      >
-                        <path
-                          stroke="none"
-                          d="M0 0h24v24H0z"
-                          fill="none"
-                        ></path>
-                        <path d="M11.5 20h-6.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v5.5"></path>
-                        <path d="M9 17h2"></path>
-                        <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-                        <path d="M20.2 20.2l1.8 1.8"></path>
-                      </svg>
-                    </Match>
-                    <Match when={layout() === "image"}>
-                      <svg
-                        fill="none"
-                        stroke-width="2"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="icon icon-tabler icon-tabler-photo-search"
-                        width="1em"
-                        height="1em"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        style="overflow: visible; color: currentcolor;"
-                      >
-                        <path
-                          stroke="none"
-                          d="M0 0h24v24H0z"
-                          fill="none"
-                        ></path>
-                        <path d="M15 8h.01"></path>
-                        <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5.5"></path>
-                        <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-                        <path d="M20.2 20.2l1.8 1.8"></path>
-                        <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l2 2"></path>
-                      </svg>
-                    </Match>
-                  </Switch>
-                }
-                onClick={() => {
-                  bus.emit("tool", "search")
-                }}
-              />
-              <Layout />
-            </Show>
-          </HStack>
+          <Image
+            src={logo()!}
+            h="$full"
+            w="auto"
+            fallback={<CenterLoading />}
+          />
         </HStack>
-      </Container>
+      </HStack>
+      <HStack class="header-right" spacing="$2">
+        <Show when={objStore.state === State.Folder}>
+          <Show when={getSetting("search_index") !== "none"}>
+            <IconButton
+              aria-label="Search"
+              color={getMainColor()}
+              bgColor={changeColor(getMainColor(), { alpha: 0.05 })}
+              _hover={{
+                bgColor: changeColor(getMainColor(), { alpha: 0.2 }),
+              }}
+              compact
+              size="lg"
+              icon={
+                <Switch>
+                  <Match when={layout() === "list"}>
+                    <TbListSearch />
+                  </Match>
+                  <Match when={layout() === "grid"}>
+                    <svg
+                      fill="none"
+                      stroke-width="2"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="icon icon-tabler icon-tabler-device-ipad-horizontal-search"
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      style="overflow: visible; color: currentcolor;"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M11.5 20h-6.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v5.5"></path>
+                      <path d="M9 17h2"></path>
+                      <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                      <path d="M20.2 20.2l1.8 1.8"></path>
+                    </svg>
+                  </Match>
+                  <Match when={layout() === "image"}>
+                    <svg
+                      fill="none"
+                      stroke-width="2"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="icon icon-tabler icon-tabler-photo-search"
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      style="overflow: visible; color: currentcolor;"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M15 8h.01"></path>
+                      <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5.5"></path>
+                      <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                      <path d="M20.2 20.2l1.8 1.8"></path>
+                      <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l2 2"></path>
+                    </svg>
+                  </Match>
+                </Switch>
+              }
+              onClick={() => {
+                bus.emit("tool", "search")
+              }}
+            />
+          </Show>
+          <Show when={!isMediaPage()}>
+            <Layout />
+          </Show>
+        </Show>
+      </HStack>
+    </HStack>
+  )
+
+  return (
+    <Center {...stickyProps} bgColor="$background" class="header" w="$full">
+      <Show when={props.flush} fallback={<Container>{content()}</Container>}>
+        <Box w="$full">{content()}</Box>
+      </Show>
     </Center>
   )
 }

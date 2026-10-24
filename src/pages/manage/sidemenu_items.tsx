@@ -111,6 +111,12 @@ export const side_menu_items: SideMenuItem[] = [
         component: () => <CommonSettings group={Group.TRAFFIC} />,
       },
       {
+        title: "manage.sidemenu.transcode",
+        icon: BsCameraFill,
+        to: "/LONGYun2025/settings/transcode",
+        component: () => <CommonSettings group={Group.TRANSCODE} />,
+      },
+      {
         title: "manage.sidemenu.other",
         icon: BsMedium,
         to: "/LONGYun2025/settings/other",
@@ -217,6 +223,77 @@ export const side_menu_items: SideMenuItem[] = [
     to: "/LONGYun2025/backup-restore",
     icon: FaSolidDatabase,
     component: lazy(() => import("./backup-restore")),
+  },
+  {
+    title: "manage.sidemenu.media",
+    icon: BsCameraFill,
+    to: "/LONGYun2025/media",
+    children: [
+      {
+        title: "manage.sidemenu.media_settings",
+        icon: BsGearFill,
+        to: "/LONGYun2025/media/settings",
+        component: lazy(() => import("./media/MediaSettingsPage")),
+      },
+      {
+        title: "manage.sidemenu.media_scrape",
+        icon: BsGearFill,
+        to: "/LONGYun2025/media/scrape",
+        component: lazy(() => import("./media/MediaScrapePage")),
+      },
+      {
+        title: "manage.sidemenu.media_strm",
+        icon: BsGearFill,
+        to: "/LONGYun2025/media/strm",
+        component: lazy(() => import("./media/MediaStrmPage")),
+      },
+      {
+        title: "manage.sidemenu.media_transcode",
+        icon: BsGearFill,
+        to: "/LONGYun2025/media/transcode",
+        component: () => <CommonSettings group={Group.TRANSCODE} />,
+      },
+      {
+        title: "manage.sidemenu.media_video",
+        icon: BsCameraFill,
+        to: "/LONGYun2025/media/video",
+        component: lazy(() =>
+          import("./media/MediaManage").then((m) => ({
+            default: m.VideoManage,
+          })),
+        ),
+      },
+      {
+        title: "manage.sidemenu.media_music",
+        icon: BsCameraFill,
+        to: "/LONGYun2025/media/music",
+        component: lazy(() =>
+          import("./media/MediaManage").then((m) => ({
+            default: m.MusicManage,
+          })),
+        ),
+      },
+      {
+        title: "manage.sidemenu.media_image",
+        icon: BsCameraFill,
+        to: "/LONGYun2025/media/image",
+        component: lazy(() =>
+          import("./media/MediaManage").then((m) => ({
+            default: m.ImageManage,
+          })),
+        ),
+      },
+      {
+        title: "manage.sidemenu.media_book",
+        icon: BsCameraFill,
+        to: "/LONGYun2025/media/book",
+        component: lazy(() =>
+          import("./media/MediaManage").then((m) => ({
+            default: m.BookManage,
+          })),
+        ),
+      },
+    ],
   },
   {
     title: "manage.sidemenu.about",

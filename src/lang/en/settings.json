@@ -83,6 +83,8 @@
   "media_enabled-tips": "媒体库总开关。关闭时媒体库相关页面、API 与协议端点全部不可用（返回 404），与未安装媒体库时表现一致",
   "media_google_books_key": "Media google books key",
   "media_google_books_key-tips": "Google Books API Key，可留空（无 Key 时配额较低）；申请地址 https://developers.google.com/books/docs/v1/using#APIKey",
+  "media_overwrite_cover": "Media overwrite cover",
+  "media_overwrite_cover-tips": "刮削时是否用刮削到的封面覆盖条目已有封面。默认关闭：文件自带/手动设置的封面优先，刮削只补空",
   "media_proxy_cover": "Media proxy cover",
   "media_proxy_cover-tips": "开启后由服务端代理 TMDB/豆瓣等外部封面图片，适合直连图片域名受限的网络；默认关闭，直接使用原始图片地址",
   "media_scrape_concurrency": "Media scrape concurrency",
@@ -100,6 +102,8 @@
     "zh-CN": "Zh-CN",
     "zh-TW": "Zh-TW"
   },
+  "media_skip_file_metadata": "Media skip file metadata",
+  "media_skip_file_metadata-tips": "开启后扫描/刮削跳过音乐 ID3/Vorbis 标签、图片 EXIF、EPUB/PDF 书籍内嵌封面读取，使用文件名与目录名推断元数据。图片缩略图生成与同目录外部 .lrc 歌词仍可读取文件内容，不等于禁止所有文件读取。默认关闭",
   "media_store_thumbnail": "Media store thumbnail",
   "media_strm_on_scan": "Media strm on scan",
   "media_strm_on_scan-tips": "扫描完成后自动把媒体条目生成为 .strm 文件并写入下方目录",
@@ -122,7 +126,8 @@
   "media_thumbnail_modes": {
     "base64": "Base64",
     "local": "Local",
-    "runtime": "Runtime"
+    "runtime": "Runtime",
+    "samedir": "Samedir"
   },
   "media_thumbnail_path": "Media thumbnail path",
   "media_tmdb_api_url": "Media tmdb api url",

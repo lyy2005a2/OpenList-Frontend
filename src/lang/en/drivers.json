@@ -1032,6 +1032,8 @@
     "email": "Email",
     "enable_direct_upload": "Enable direct upload",
     "enable_direct_upload-tips": "Enable direct upload from client to OneDrive",
+    "is_sharepoint": "Is sharepoint",
+    "is_sharepoint-tips": "Mount a SharePoint site's default document library instead of a user's OneDrive",
     "region": "Region",
     "regions": {
       "cn": "Cn",
@@ -1040,6 +1042,8 @@
       "us": "Us"
     },
     "root_folder_path": "Root folder path",
+    "site_id": "Site id",
+    "site_id-tips": "One of: \u003chost\u003e,\u003csiteGuid\u003e,\u003cwebGuid\u003e; \u003chost\u003e:/sites/\u003cname\u003e; or a full site URL. Point it at the site that owns the library — a bare host resolves to the empty root-site library",
     "tenant_id": "Tenant id"
   },
   "OpenList": {

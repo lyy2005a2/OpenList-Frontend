@@ -221,6 +221,7 @@
   "sso_login_platforms": {
     "Casdoor": "Casdoor",
     "Dingtalk": "Dingtalk",
+    "Feishu": "Feishu",
     "Github": "Github",
     "Google": "Google",
     "Microsoft": "Microsoft",

@@ -13,7 +13,7 @@
   "paste": "粘贴",
   "copied": "已复制",
   "clipboard_denied": "剪贴板访问被拒绝。请在您的浏览器设置中允许剪贴板权限。",
-  "delete_success": "删除成功!",
+  "delete_success": "删除成功",
   "save_success": "保存成功",
   "update_success": "更新成功",
   "choose": "选择",

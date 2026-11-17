@@ -1,14 +1,7 @@
 import { createLocalStorage } from "@solid-primitives/storage"
 import { isMobile } from "~/utils/compatibility"
 
-// Use controls object instead of directly destructuring toJSON/other methods.
-// Directly exporting method names like `toJSON` from the destructured object
-// can cause runtime problems in some bundlers/environments because of
-// property descriptor re-definition. Exporting the whole controls object
-// avoids that risk.
-const [local, setLocal, controls] = createLocalStorage()
-const { remove, clear } = controls
-
+const [local, setLocal, { remove, clear, toJSON }] = createLocalStorage()
 // export function isValidKey(
 //   key: string | number | symbol,
 //   object: object
@@ -104,5 +97,4 @@ for (const setting of initialLocalSettings) {
   }
 }
 
-// Export controls object under a safe name to avoid runtime defineProperty issues
-export { local, setLocal, remove, clear, controls as localStorageControls }
+export { local, setLocal, remove, clear, toJSON }

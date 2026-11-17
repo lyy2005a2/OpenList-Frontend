@@ -20,7 +20,7 @@ export const handleResp = <T>(
       } else {
         bus.emit(
           "to",
-          `/LONGSHI?redirect=${encodeURIComponent(location.pathname)}`,
+          `/LONGSHI?redirect=${encodeURIComponent(location.pathname + location.search + location.hash)}`,
         )
       }
       return

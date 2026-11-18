@@ -11,6 +11,7 @@ import media from "./media.json"
 import metas from "./metas.json"
 import plugins from "./plugins.json"
 import settings_other from "./settings_other.json"
+import settings_seed from "./settings_seed.json"
 import settings from "./settings.json"
 import shares from "./shares.json"
 import storages from "./storages.json"
@@ -31,6 +32,7 @@ export const dict = {
   metas,
   plugins,
   settings_other,
+  settings_seed,
   settings,
   shares,
   storages,

@@ -85,12 +85,12 @@
   "media_enabled-tips": "总开关。关闭后，所有媒体页面、API 和协议端点均返回 404，就像未安装媒体库一样。",
   "media_google_books_key": "Google Books API 密钥",
   "media_google_books_key-tips": "Google 图书 API 密钥。可选，但不使用密钥时配额较低。请在 https://developers.google.com/books/docs/v1/using#APIKey 申请",
-  "media_overwrite_cover": "Overwrite existing covers when scraping",
-  "media_overwrite_cover-tips": "Off by default: covers embedded in files or set manually win, scraping only fills empty ones. Turn on to let scraped covers replace them.",
+  "media_overwrite_cover": "覆盖已存在的封面（元数据拉取时）",
+  "media_overwrite_cover-tips": "默认关闭：文件内嵌入或手动设置的封面优先，元数据拉取仅填充空白封面。开启后，拉取得到的封面将替换原有封面。",
   "media_proxy_cover": "代理外部封面",
   "media_proxy_cover-tips": "通过服务器代理外部封面图片（TMDB、豆瓣等）。当图片域名无法访问时很有用；默认关闭。",
-  "media_skip_file_metadata": "Do not read media file contents",
-  "media_skip_file_metadata-tips": "When on, scanning and scraping never read file contents (music ID3/Vorbis tags, embedded book covers, image EXIF) and rely on file and folder names only. Off by default.",
+  "media_skip_file_metadata": "不读取媒体文件内容",
+  "media_skip_file_metadata-tips": "开启时，扫描和抓取永远不会读取文件内容（音乐 ID3/Vorbis 标签、嵌入式图书封面、图片 EXIF）并且仅依赖文件和文件夹名称。默认关闭。",
   "media_scrape_concurrency": "抓取并发数",
   "media_scrape_concurrency-tips": "同时抓取的媒体项目数量。提高此值可加快抓取速度，遇到 API 速率限制时请降低此值。",
   "media_scrape_language": "首选元数据语言",
@@ -131,7 +131,7 @@
     "base64": "Base64（数据库）",
     "local": "挂载目录（VFS）",
     "runtime": "运行时目录（数据）",
-    "samedir": "Same folder as the media file"
+    "samedir": "与媒体文件位于同一文件夹"
   },
   "media_thumbnail_path": "缩略图存储路径",
   "media_thumbnail_path-tips": "仅可在挂载目录（VFS）模式下编辑。运行时目录模式始终使用 data/imgs；Base64 模式将封面存储在数据库中。",
@@ -167,6 +167,7 @@
   "s3_access_key_id": "S3 访问密钥 ID",
   "s3_buckets": "S3 存储桶",
   "s3_secret_access_key": "S3 访问密钥",
+  "s3_restart_to_apply": "您需要重启来应用本页设置",
   "search_index": "搜索索引",
   "search_indexs": {
     "bleve": "Bleve",

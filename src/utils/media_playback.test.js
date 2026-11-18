@@ -202,7 +202,7 @@ test("late favorite reads cannot overwrite an optimistic write; duplicate writes
 test("401 redirect preserves the complete media query and hash and keeps manage fallback", () => {
   const destinations = []
   const location = {
-    pathname: "/@media/video/7",
+    pathname: "/LONGMedia/video/7",
     search: "?play=1&ep=3",
     hash: "#resume",
   }

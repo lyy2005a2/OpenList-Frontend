@@ -146,9 +146,9 @@ const App: Component = () => {
     }
   })
 
-  // 媒体库关闭时，/@media/* 等同于不存在（设置入口在后台管理内）
+  // 媒体库关闭时，/LONGMedia/* 等同于不存在（设置入口在后台管理内）
   createEffect(() => {
-    if (!loading() && !mediaEnabled() && pathname().startsWith("/@media")) {
+    if (!loading() && !mediaEnabled() && pathname().startsWith("/LONGMedia")) {
       to("/", true)
     }
   })
@@ -158,7 +158,7 @@ const App: Component = () => {
   // 明暗模式各有一套色阶，切换配色模式时重新写入。
   createEffect(() => {
     const dark = colorMode() === "dark"
-    const onMediaPage = pathname().startsWith("/@media")
+    const onMediaPage = pathname().startsWith("/LONGMedia")
     if (!mediaEnabled() || !mediaAccentEnabled() || !onMediaPage) {
       clearAccentPalette()
     } else {
@@ -214,7 +214,7 @@ const App: Component = () => {
                     要跳到登录页。早前用 UserOrGuest 会静默降级成访客身份继续渲染，
                     结果接口全 401、页面只显示「暂无内容」。 */}
                 <Route
-                  path="/@media/video/*"
+                  path="/LONGMedia/video/*"
                   element={
                     <MustUser>
                       <MediaShell>
@@ -224,7 +224,7 @@ const App: Component = () => {
                   }
                 />
                 <Route
-                  path="/@media/music/*"
+                  path="/LONGMedia/music/*"
                   element={
                     <MustUser>
                       <MediaShell>
@@ -234,7 +234,7 @@ const App: Component = () => {
                   }
                 />
                 <Route
-                  path="/@media/image/*"
+                  path="/LONGMedia/image/*"
                   element={
                     <MustUser>
                       <MediaShell>
@@ -244,7 +244,7 @@ const App: Component = () => {
                   }
                 />
                 <Route
-                  path="/@media/books/*"
+                  path="/LONGMedia/books/*"
                   element={
                     <MustUser>
                       <MediaShell>

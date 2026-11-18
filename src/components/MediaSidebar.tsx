@@ -98,40 +98,41 @@ export const MediaSidebar = () => {
         label: t("home.media.nav_files"),
         path: "/",
         icon: TbFolder,
-        match: (p) => !p.startsWith("/@media") && !p.startsWith("/LONGYun2025"),
+        match: (p) =>
+          !p.startsWith("/LONGMedia") && !p.startsWith("/LONGYun2025"),
       },
     ]
     const types = mediaStatus().types
     if (types.includes("video")) {
       list.push({
         label: t("home.media.nav_video"),
-        path: "/@media/video",
+        path: "/LONGMedia/video",
         icon: TbMovie,
-        match: (p) => p.startsWith("/@media/video"),
+        match: (p) => p.startsWith("/LONGMedia/video"),
       })
     }
     if (types.includes("music")) {
       list.push({
         label: t("home.media.nav_music"),
-        path: "/@media/music",
+        path: "/LONGMedia/music",
         icon: TbMusic,
-        match: (p) => p.startsWith("/@media/music"),
+        match: (p) => p.startsWith("/LONGMedia/music"),
       })
     }
     if (types.includes("image")) {
       list.push({
         label: t("home.media.nav_image"),
-        path: "/@media/image",
+        path: "/LONGMedia/image",
         icon: TbPhoto,
-        match: (p) => p.startsWith("/@media/image"),
+        match: (p) => p.startsWith("/LONGMedia/image"),
       })
     }
     if (types.includes("book")) {
       list.push({
         label: t("home.media.nav_book"),
-        path: "/@media/books",
+        path: "/LONGMedia/books",
         icon: TbBook,
-        match: (p) => p.startsWith("/@media/books"),
+        match: (p) => p.startsWith("/LONGMedia/books"),
       })
     }
     return list

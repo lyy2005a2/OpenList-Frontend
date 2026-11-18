@@ -34,7 +34,7 @@ import { isMac } from "~/utils/compatibility"
 export const Header = (props: { flush?: boolean } = {}) => {
   const { pathname } = useRouter()
   // 媒体库页面有自己的视图切换，文件列表的布局切换对这里无意义
-  const isMediaPage = () => pathname().startsWith("/@media")
+  const isMediaPage = () => pathname().startsWith("/LONGMedia")
   const logos = getSetting("logo").split("\n")
   const logo = useColorModeValue(logos[0], logos.pop())
 

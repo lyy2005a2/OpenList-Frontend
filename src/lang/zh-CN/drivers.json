@@ -561,15 +561,13 @@
     "thumbnail-tips": "启用在缩略图文件夹下预先生成的缩略图"
   },
   "CtFile": {
-    "session": "会话",
-    "session-tips": "城通网盘控制台 → 开放接口登录密钥管理 中的 OpenAPI 会话令牌",
-    "cloud_type": "网盘类型",
-    "cloud_types": {
-      "public": "公开",
-      "private": "私有"
-    },
     "base_url": "基础 URL",
     "base_url-tips": "API 基础地址，默认 https://rest.ctfile.com/v1",
+    "cloud_type": "网盘类型",
+    "cloud_types": {
+      "private": "私有",
+      "public": "公开"
+    },
     "order_by": "排序依据",
     "order_bys": {
       "name": "名称",
@@ -581,8 +579,10 @@
       "asc": "升序",
       "desc": "降序"
     },
-    "user_agent": "用户代理",
-    "root_folder_id": "根文件夹 ID"
+    "root_folder_id": "根文件夹 ID",
+    "session": "会话",
+    "session-tips": "城通网盘控制台 → 开放接口登录密钥管理 中的 OpenAPI 会话令牌",
+    "user_agent": "用户代理"
   },
   "Degoo": {
     "access_token": "访问令牌",
@@ -1032,6 +1032,8 @@
     "email": "邮箱",
     "enable_direct_upload": "启用前端直传",
     "enable_direct_upload-tips": "允许不经OpenList直接上传到OneDrive",
+    "is_sharepoint": "Is sharepoint",
+    "is_sharepoint-tips": "Mount a SharePoint site's default document library instead of a user's OneDrive",
     "region": "地区",
     "regions": {
       "cn": "世纪互联",
@@ -1040,6 +1042,8 @@
       "us": "美国版"
     },
     "root_folder_path": "根文件夹路径",
+    "site_id": "Site id",
+    "site_id-tips": "One of: <host>,<siteGuid>,<webGuid>; <host>:/sites/<name>; or a full site URL. Point it at the site that owns the library — a bare host resolves to the empty root-site library",
     "tenant_id": "租户 ID"
   },
   "OpenList": {

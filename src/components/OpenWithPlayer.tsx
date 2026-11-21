@@ -9,6 +9,7 @@ import {
 import { For, createSignal } from "solid-js"
 import { FaSolidAngleDown } from "solid-icons/fa"
 import { getPlatform, notify } from "~/utils"
+import { useT } from "~/hooks"
 import { getMediaStreamUrl, resolveMediaUrl } from "~/utils/media_api"
 import { playersForPlatform, renderPlayerScheme } from "~/utils/players"
 
@@ -32,6 +33,7 @@ interface OpenWithPlayerProps {
  * 点击时向后端换取带签名的直链，再交给 potplayer:// / vlc:// 等 scheme。
  */
 export const OpenWithPlayer = (props: OpenWithPlayerProps) => {
+  const t = useT()
   const [loading, setLoading] = createSignal(false)
   // 提前换取直链：外部协议必须在用户手势内同步触发，
   // 否则 Chrome 会拦截「用户手势已丢失」的自定义 scheme 跳转。
@@ -45,14 +47,14 @@ export const OpenWithPlayer = (props: OpenWithPlayerProps) => {
     if (props.path) {
       const resp = await getMediaStreamUrl({ path: props.path })
       if (resp.code !== 200 || !resp.data) {
-        notify.error(resp.message || "获取直链失败")
+        notify.error(resp.message || t("home.media.direct_link_failed"))
         return null
       }
       // 外部播放器必须拿到绝对地址：后端在回环 host 场景会返回 /d/... 相对路径
       return resolveMediaUrl(resp.data.url)
     }
     if (!props.itemId) {
-      notify.error("缺少媒体信息")
+      notify.error(t("home.media.media_info_missing"))
       return null
     }
     const resp = await getMediaStreamUrl({
@@ -112,9 +114,9 @@ export const OpenWithPlayer = (props: OpenWithPlayerProps) => {
       const url = await resolveURL()
       if (!url) return
       await navigator.clipboard.writeText(url)
-      notify.success("直链已复制")
+      notify.success(t("home.media.direct_link_copied"))
     } catch {
-      notify.error("复制失败")
+      notify.error(t("home.media.copy_failed"))
     } finally {
       setLoading(false)
     }

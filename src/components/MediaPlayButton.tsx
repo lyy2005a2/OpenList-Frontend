@@ -17,6 +17,7 @@ import {
   TbPlayerPlay,
 } from "solid-icons/tb"
 import { api, getPlatform, notify } from "~/utils"
+import { useT } from "~/hooks"
 import { getMediaStreamUrl, resolveMediaUrl } from "~/utils/media_api"
 import { accent } from "~/store/accent"
 import { playersForPlatform, renderPlayerScheme } from "~/utils/players"
@@ -57,6 +58,7 @@ const iconOf = (id: string) => {
  * 默认「浏览器播放」；切换为外部播放器后，文本固定为「播放器播放」。
  */
 export const MediaPlayButton = (props: MediaPlayButtonProps) => {
+  const t = useT()
   const { colorMode } = useColorMode()
   const isDark = createMemo(() => colorMode() === "dark")
   const players = () => playersForPlatform(getPlatform())
@@ -114,14 +116,14 @@ export const MediaPlayButton = (props: MediaPlayButtonProps) => {
     if (props.path) {
       const resp = await getMediaStreamUrl({ path: props.path })
       if (resp.code !== 200 || !resp.data) {
-        notify.error(resp.message || "获取直链失败")
+        notify.error(resp.message || t("home.media.direct_link_failed"))
         return null
       }
       // 外部播放器/新窗口需要绝对地址：后端在回环 host 场景会返回 /d/... 相对路径
       return resolveMediaUrl(resp.data.url)
     }
     if (!props.itemId) {
-      notify.error("缺少媒体信息")
+      notify.error(t("home.media.media_info_missing"))
       return null
     }
     const resp = await getMediaStreamUrl({
@@ -210,7 +212,7 @@ export const MediaPlayButton = (props: MediaPlayButtonProps) => {
     // Emby 走自身深链（服务器 ID + 条目 ID），不播放直链
     if (player.id === "emby") {
       if (!props.itemId) {
-        notify.error("缺少媒体信息")
+        notify.error(t("home.media.media_info_missing"))
         return
       }
       const serverId = embyServerId()
@@ -220,7 +222,7 @@ export const MediaPlayButton = (props: MediaPlayButtonProps) => {
       }
       const sid = await resolveEmbyServer()
       if (!sid) {
-        notify.error("无法获取 Emby 服务器 ID")
+        notify.error(t("home.media.emby_server_id_missing"))
         return
       }
       launch(player.scheme, "", sid, props.itemId)
@@ -326,8 +328,8 @@ export const MediaPlayButton = (props: MediaPlayButtonProps) => {
         </button>
         <button
           class="media-split-btn media-split-btn--caret"
-          aria-label="选择播放器"
-          title="选择播放器"
+          aria-label={t("home.media.select_player")}
+          title={t("home.media.select_player")}
           onClick={(e) => {
             e.stopPropagation()
             setOpen(!open())

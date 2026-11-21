@@ -89,7 +89,7 @@ export const MediaSidebar = () => {
       })
     } catch {
       setLoggingOut(false)
-      notify.error("Sign out failed")
+      notify.error(t("home.media.sign_out_failed"))
     }
   }
   const items = createMemo<NavEntry[]>(() => {
@@ -211,7 +211,7 @@ export const MediaSidebar = () => {
               px="$1"
               minW="0"
               display={{ "@initial": "inline-flex", "@md": "none" }}
-              aria-label="collapse media sidebar"
+              aria-label={t("home.media.sidebar_collapse")}
               onClick={() => setMediaSidebarOpen(false)}
             >
               <Icon as={TbChevronLeft} boxSize="$4" />
@@ -252,7 +252,7 @@ export const MediaSidebar = () => {
                 alignItems="center"
                 justifyContent="flex-end"
               >
-                <Tooltip label="GitHub Repository">
+                <Tooltip label={t("home.media.github_repo")}>
                   <Anchor
                     href="https://github.com/OpenListTeam/OpenList"
                     external
@@ -267,7 +267,7 @@ export const MediaSidebar = () => {
                     <Icon as={TbBrandGithub} boxSize="$4" />
                   </Anchor>
                 </Tooltip>
-                <Tooltip label="Documentation">
+                <Tooltip label={t("home.media.docs")}>
                   <Anchor
                     href="https://doc.oplist.org"
                     external
@@ -282,7 +282,7 @@ export const MediaSidebar = () => {
                     <Icon as={TbBook2} boxSize="$4" />
                   </Anchor>
                 </Tooltip>
-                <Tooltip label="Theme color">
+                <Tooltip label={t("home.media.theme_color")}>
                   <Button
                     size="xs"
                     variant="ghost"
@@ -291,7 +291,7 @@ export const MediaSidebar = () => {
                     h="$6"
                     minW="$6"
                     p="0"
-                    aria-label="theme color"
+                    aria-label={t("home.media.theme_color")}
                     onClick={() => setShowPalette(!showPalette())}
                   >
                     <Icon as={TbPalette} boxSize="$4" />
@@ -309,7 +309,11 @@ export const MediaSidebar = () => {
                 justifyContent="flex-end"
               >
                 <Tooltip
-                  label={colorMode() === "dark" ? "Light mode" : "Dark mode"}
+                  label={
+                    colorMode() === "dark"
+                      ? t("home.media.light_mode")
+                      : t("home.media.dark_mode")
+                  }
                 >
                   <Button
                     size="xs"
@@ -319,7 +323,7 @@ export const MediaSidebar = () => {
                     h="$6"
                     minW="$6"
                     p="0"
-                    aria-label="toggle color mode"
+                    aria-label={t("home.media.toggle_color_mode")}
                     onClick={toggleColorMode}
                   >
                     <Icon
@@ -332,7 +336,7 @@ export const MediaSidebar = () => {
                   when={UserMethods.is_guest(me())}
                   fallback={
                     <>
-                      <Tooltip label="设置">
+                      <Tooltip label={t("home.media.settings")}>
                         <Button
                           variant={manageActive() ? "subtle" : "ghost"}
                           colorScheme={manageActive() ? "accent" : "neutral"}
@@ -341,13 +345,13 @@ export const MediaSidebar = () => {
                           h="$6"
                           minW="$6"
                           p="0"
-                          aria-label="设置"
+                          aria-label={t("home.media.settings")}
                           onClick={() => to("/LONGYun2025/settings/site")}
                         >
                           <Icon as={TbSettings} boxSize="$4" />
                         </Button>
                       </Tooltip>
-                      <Tooltip label="退出登录">
+                      <Tooltip label={t("home.media.logout")}>
                         <Button
                           size="xs"
                           variant="ghost"
@@ -357,7 +361,7 @@ export const MediaSidebar = () => {
                           minW="$6"
                           p="0"
                           loading={loggingOut()}
-                          aria-label="退出登录"
+                          aria-label={t("home.media.logout")}
                           onClick={logout}
                         >
                           <Icon as={TbLogout} boxSize="$4" />
@@ -366,14 +370,14 @@ export const MediaSidebar = () => {
                     </>
                   }
                 >
-                  <Tooltip label="登录">
+                  <Tooltip label={t("home.media.login")}>
                     <Button
                       size="xs"
                       variant="ghost"
                       colorScheme="neutral"
                       minW="0"
                       px="$1"
-                      aria-label="登录"
+                      aria-label={t("home.media.login")}
                       onClick={() =>
                         to(
                           `/LONGSHI?redirect=${encodeURIComponent(location.pathname)}`,
@@ -383,14 +387,14 @@ export const MediaSidebar = () => {
                       <Icon as={TbLogin} boxSize="$4" />
                     </Button>
                   </Tooltip>
-                  <Tooltip label="设置">
+                  <Tooltip label={t("home.media.settings")}>
                     <Button
                       size="xs"
                       variant="ghost"
                       colorScheme="neutral"
                       minW="0"
                       px="$1"
-                      aria-label="设置"
+                      aria-label={t("home.media.settings")}
                       onClick={() => to("/LONGYun2025/settings/site")}
                     >
                       <Icon as={TbSettings} boxSize="$4" />
@@ -416,7 +420,7 @@ export const MediaSidebar = () => {
             >
               <VStack spacing="$2" alignItems="stretch">
                 <Text fontSize="$xs" color="$neutral11">
-                  Theme color
+                  {t("home.media.theme_color")}
                 </Text>
                 <HStack spacing="$2" flexWrap="wrap">
                   <For each={ACCENT_PRESETS}>
@@ -458,7 +462,7 @@ export const MediaSidebar = () => {
                     setShowPalette(false)
                   }}
                 >
-                  Follow site default
+                  {t("home.media.follow_site_default")}
                 </Button>
                 <Button
                   size="xs"
@@ -467,8 +471,8 @@ export const MediaSidebar = () => {
                   onClick={() => setMediaAccentEnabled(!mediaAccentEnabled())}
                 >
                   {mediaAccentEnabled()
-                    ? "Theme color: media only (on)"
-                    : "Theme color: off"}
+                    ? t("home.media.theme_color_media_only")
+                    : t("home.media.theme_color_off")}
                 </Button>
               </VStack>
             </Box>
@@ -484,6 +488,7 @@ export const MediaSidebar = () => {
  * 管理后台等页面没有 Home 的顶栏，需要这个入口才能重新展开。
  */
 export const MediaSidebarFloatingTrigger = () => {
+  const t = useT()
   // 手机端顶栏本身就有侧栏入口，浮动开关会和底部播放条叠在一起，直接不渲染
   const [isMobile, setIsMobile] = createSignal(false)
   onMount(() => {
@@ -507,7 +512,7 @@ export const MediaSidebarFloatingTrigger = () => {
         shadow="$md"
         px="$3"
         onClick={() => setMediaSidebarOpen(true)}
-        aria-label="expand media sidebar"
+        aria-label={t("home.media.sidebar_expand")}
       >
         <Text fontSize="$md">»</Text>
       </Button>
@@ -517,18 +522,25 @@ export const MediaSidebarFloatingTrigger = () => {
 
 /** 顶栏中的侧边栏开关（媒体库启用时才渲染） */
 export const MediaSidebarTrigger = () => {
+  const t = useT()
   return (
     <Show when={mediaEnabled()}>
       {/* 用现成图标替代手绘三条横线：之前那三个 Box 在 1.5x 屏上粗细不一半像素模糊，
           和侧栏右上角的收起按钮功能重复，这里统一成「展开/收起」语义的图标 */}
-      <Tooltip label={mediaSidebarOpen() ? "收起媒体库侧栏" : "展开媒体库侧栏"}>
+      <Tooltip
+        label={
+          mediaSidebarOpen()
+            ? t("home.media.sidebar_collapse")
+            : t("home.media.sidebar_expand")
+        }
+      >
         <Button
           variant="ghost"
           colorScheme="neutral"
           size="sm"
           px="$2"
           onClick={() => setMediaSidebarOpen(!mediaSidebarOpen())}
-          aria-label="media sidebar"
+          aria-label={t("home.media.media_sidebar")}
         >
           <Icon
             as={
